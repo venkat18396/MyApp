@@ -32,7 +32,7 @@ pipeline{
         steps{
             script{
             try{
-                deploy adapters: [tomcat9(credentialsId: '787b3c9a-fc31-40d1-8e69-bd9211fd5b90', path: '', url: 'http://172.31.85.176:8080/')], contextPath: 'test', war: '**/*.war'
+                deploy adapters: [tomcat9(credentialsId: 'c7966982-3559-4209-b19a-2acd46dbfa78', path: '', url: 'http://172.31.62.190:8080')], contextPath: 'test', war: '**/*.war'
             }
             catch(Exception e){
                 mail bcc: '', body: 'Jenkins job failed to at stage "CDeploy"', cc: '', from: '', replyTo: '', subject: 'JENKINS JOB CDeploy to QA', to: 'venkat.18396@gmail.com'
@@ -46,7 +46,7 @@ pipeline{
             script{
             try{
                 git 'https://github.com/intelliqittrainings/FunctionalTesting.git'
-                sh 'java -jar /var/lib/jenkins/workspace/Declarative_PL_SimpleMaster/testing.jar'
+                sh 'java -jar /var/lib/jenkins/workspace/GITPL/testing.jar'
             }
             catch(Exception e){
                 mail bcc: '', body: 'Jenkins job failed to at stage "CTest"', cc: '', from: '', replyTo: '', subject: 'JENKINS JOB CTest', to: 'venkat.18396@gmail.com'
@@ -59,8 +59,8 @@ pipeline{
         steps{
             script{
             try{
-                deploy adapters: [tomcat9(credentialsId: '787b3c9a-fc31-40d1-8e69-bd9211fd5b90', path: '', url: 'http://172.31.87.2:8080/')], contextPath: 'prod', war: '**/*.war'
-            mail bcc: '', body: 'Jenkins deployment to PRODUCTION HOUSE is finished with status "SUCCESS"', cc: '', from: '', replyTo: '', subject: 'JENKINS JOB Deployment', to: 'venkat.18396@gmail.com'
+                deploy adapters: [tomcat9(credentialsId: 'c7966982-3559-4209-b19a-2acd46dbfa78', path: '', url: 'http://172.31.59.62:8080')], contextPath: 'pro', war: '**/*.war'
+                mail bcc: '', body: 'Jenkins deployment to PRODUCTION HOUSE is finished with status "SUCCESS"', cc: '', from: '', replyTo: '', subject: 'JENKINS JOB Deployment', to: 'venkat.18396@gmail.com'
             }
             catch(Exception e){
                 mail bcc: '', body: 'Jenkins job failed to at stage "CDeploymenttoPROD"', cc: '', from: '', replyTo: '', subject: 'JENKINS JOB CTest', to: 'venkat.18396@gmail.com'
