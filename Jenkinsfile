@@ -59,7 +59,7 @@ pipeline{
         steps{
             script{
             try{
-                deploy adapters: [tomcat9(credentialsId: 'c7966982-3559-4209-b19a-2acd46dbfa78', path: '', url: 'http://172.31.59.62:8080')], contextPath: 'pro', war: '**/*.war'
+                1deploy adapters: [tomcat9(credentialsId: 'c7966982-3559-4209-b19a-2acd46dbfa78', path: '', url: 'http://172.31.59.62:8080')], contextPath: 'pro', war: '**/*.war'
                 mail bcc: '', body: 'Jenkins deployment to PRODUCTION HOUSE is finished with status "SUCCESS"', cc: '', from: '', replyTo: '', subject: 'JENKINS JOB Deployment', to: 'venkat.18396@gmail.com'
             }
             catch(Exception e){
