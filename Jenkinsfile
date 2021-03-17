@@ -19,7 +19,7 @@ pipeline{
         steps{
             script{
             try{
-                sh 'mvn packages'
+                sh 'mvn package'
             }
             catch(Exception e){
                 mail bcc: '', body: 'Jenkins job failed to at stage "CBuild"', cc: '', from: '', replyTo: '', subject: 'JENKINS JOB CBuild', to: 'venkat.18396@gmail.com'
